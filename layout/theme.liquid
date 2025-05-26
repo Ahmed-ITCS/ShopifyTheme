@@ -319,7 +319,18 @@
       <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>
-
+<style>
+.header.header--top-left.header--mobile-center.page-width.header--has-menu.header--has-account {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        width: 100vw;
+        height: 120px;
+        margin: 0px;
+        max-width: 100vw;
+      }
+</style>
     <script>
       window.shopUrl = '{{ request.origin }}';
       window.routes = {
