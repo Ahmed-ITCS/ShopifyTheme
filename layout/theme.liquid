@@ -1,64 +1,28 @@
 <!-- layout/theme.liquid -->
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <title>{{ page_title }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ content_for_header }}
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page_title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {{ content_for_header }}
+  <link href="{{ 'base.css' | asset_url }}" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">{{ shop.name }}</h1>
+    </div>
+  </header>
 
-    <style>
-      body {
-        font-family: 'Helvetica Neue', sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #fff0f5;
-        color: #333;
-      }
+  <main>
+    {{ content_for_layout }}
+  </main>
 
-      header, footer {
-        background-color: #ffe6f0;
-        padding: 1.5rem;
-        text-align: center;
-      }
-
-      a {
-        color: #e75480;
-        text-decoration: none;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-      }
-
-      .btn {
-        background-color: #e75480;
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 5px;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-      }
-
-      .btn:hover {
-        background-color: #d4416b;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>{{ shop.name }}</h1>
-    </header>
-
-    <main>
-      {{ content_for_layout }}
-    </main>
-
-    <footer>
+  <footer class="footer">
+    <div class="container">
       <p>© {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
-    </footer>
-  </body>
+    </div>
+  </footer>
+</body>
 </html>
