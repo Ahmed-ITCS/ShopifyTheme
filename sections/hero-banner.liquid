@@ -1,26 +1,45 @@
-<!-- sections/hero-banner.liquid -->
-<section style="background: linear-gradient(to right, #ffe6f0, #fffafc); padding: 4rem 0; text-align: center;">
-  <div class="container">
-    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">{{ section.settings.heading }}</h2>
-    <p style="font-size: 1.2rem; max-width: 600px; margin: auto;">{{ section.settings.subtext }}</p>
-    <a href="{{ section.settings.button_link }}" class="btn">{{ section.settings.button_text }}</a>
-  </div>
+<section class="hero">
+  <h1>Train Fierce. Look Fierce.</h1>
+  <p>High-performance gym gear and bold clothing that matches your hustle.</p>
+  <a href="/collections/all">Explore Collection</a>
 </section>
 
-{% schema %}
-{
-  "name": "Hero Banner",
-  "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Train With Style & Strength" },
-    { "type": "textarea", "id": "subtext", "label": "Subtext", "default": "Discover our exclusive collection of gymwear designed for confident women like you." },
-    { "type": "text", "id": "button_text", "label": "Button Text", "default": "Explore Collection" },
-    { "type": "url", "id": "button_link", "label": "Button Link", "default": "/collections/all" }
-  ],
-  "presets": [
-    {
-      "name": "Hero Banner",
-      "category": "Hero"
-    }
-  ]
-}
-{% endschema %}
+<!-- Product Grid with Mock Data -->
+{% assign mock_products = 
+  '[{
+    "title": "Blackout Leggings",
+    "url": "#",
+    "price": 42.99,
+    "image": "https://images.unsplash.com/photo-1589987601954-8288c59a2b61?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "title": "Flare Orange Sports Bra",
+    "url": "#",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "title": "Jet Black Crop Hoodie",
+    "url": "#",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1589987602301-d6d690de7a2e?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "title": "Molten Orange Shorts",
+    "url": "#",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1600180758890-e64b6d437d5e?auto=format&fit=crop&w=600&q=80"
+  }]' | parse_json
+%}
+
+<section class="product-grid">
+  {% for product in mock_products %}
+    <div class="product-card">
+      <a href="{{ product.url }}">
+        <img src="{{ product.image }}" alt="{{ product.title }}">
+        <h4>{{ product.title }}</h4>
+        <p>${{ product.price }}</p>
+      </a>
+    </div>
+  {% endfor %}
+</section>
